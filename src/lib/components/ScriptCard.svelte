@@ -57,16 +57,16 @@
                 {#if copying}
                     <i class="fas fa-check"></i> Copied!
                 {:else}
-                    <i class="fas fa-copy"></i> Copy Code
+                    <i class="fas fa-copy"></i>
                 {/if}
             </button>
             
             <button class="button button-primary" on:click={handleDownload}>
-                <i class="fas fa-download"></i> Download
+                <i class="fas fa-download"></i>
             </button>
             
             <a href="/scripts/{script.id}" class="button button-secondary">
-                <i class="fas fa-eye"></i> View Details
+                <i class="fas fa-eye"></i>
             </a>
         </div>
     </div>
