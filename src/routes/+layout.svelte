@@ -2,10 +2,13 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { initTheme } from '$lib/stores/themeStore';
+    import '../app.css';
     
     onMount(() => {
         initTheme();
     });
 </script>
 
-<slot />
+<div class="flex flex-col min-h-screen">
+    <slot />
+</div>

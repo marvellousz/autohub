@@ -1,0 +1,33 @@
+/* Minimal global styles not handled by Tailwind */
+
+/* Reset defaults for focus styles */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid #5663f6;
+  outline-offset: 2px;
+}
+
+/* Utility classes not easily handled by Tailwind */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Transition helpers */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}

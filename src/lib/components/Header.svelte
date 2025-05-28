@@ -1,9 +1,8 @@
 <!-- Header component for site navigation -->
-<script lang="ts">
-    import { page } from '$app/stores';
+<script lang="ts">    import { page } from '$app/stores';
     import { onMount } from 'svelte';
     import { authStore, initAuth, logout } from '$lib/auth/auth';
-    import { theme, toggleTheme, initTheme } from '$lib/stores/themeStore';
+    import { initTheme } from '$lib/stores/themeStore';
     
     // Initialize auth and theme on mount
     onMount(() => {
@@ -19,63 +18,53 @@
     }
 </script>
 
-<header class="header">
-    <div class="container">
-        <nav class="nav">
-            <a href="/" class="nav-brand">
-                <i class="fas fa-robot"></i> AutoHub
-            </a>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="/" class="nav-link" class:active={$page.url.pathname === '/'}>
-                        Home
+<header class="bg-white shadow-md dark:bg-gray-900 dark:shadow-gray-800">
+    <div class="container mx-auto px-4">
+        <nav class="flex items-center justify-between py-4">
+            <a href="/" class="text-xl font-bold text-blue-600 dark:text-blue-400 flex items-center">
+                <i class="fas fa-robot mr-2"></i> AutoHub
+            </a>            <ul class="flex space-x-3 items-center">                <li>
+                    <a href="/" class={`px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all ${$page.url.pathname === '/' ? 'text-blue-600 dark:text-blue-400 font-medium' : 'text-gray-700 dark:text-gray-300'}`}>
+                        <i class="fas fa-home mr-1"></i> Home
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="/scripts" class="nav-link" class:active={$page.url.pathname === '/scripts'}>
-                        Browse Scripts
+                <li>
+                    <a href="/scripts" class={`px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all ${$page.url.pathname === '/scripts' ? 'text-blue-600 dark:text-blue-400 font-medium' : 'text-gray-700 dark:text-gray-300'}`}>
+                        <i class="fas fa-code mr-1"></i> Browse Scripts
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="/submit" class="nav-link" class:active={$page.url.pathname === '/submit'}>
-                        Submit Script
-                    </a>
-                </li>                <li class="nav-item">
-                    <a href="/about" class="nav-link" class:active={$page.url.pathname === '/about'}>
-                        About
+                <li>
+                    <a href="/submit" class={`px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all ${$page.url.pathname === '/submit' ? 'text-blue-600 dark:text-blue-400 font-medium' : 'text-gray-700 dark:text-gray-300'}`}>
+                        <i class="fas fa-upload mr-1"></i> Submit Script
                     </a>
                 </li>
-
-                <!-- Theme Toggle -->
-                <li class="nav-item">
-                    <button class="theme-toggle nav-link" on:click={toggleTheme}>
-                        {#if $theme === 'dark'}
-                            <i class="fas fa-sun"></i>
-                        {:else}
-                            <i class="fas fa-moon"></i>
-                        {/if}
-                    </button>
-                </li>
-                
-                <!-- Authentication Links -->{#if $authStore.isAuthenticated}
-                    <li class="nav-item dropdown">
-                        <a href="javascript:void(0)" class="nav-link user-menu">
-                            {$authStore.user?.username || 'User'} ▼
-                        </a>
-                        <div class="dropdown-menu">
-                            <a href="/profile" class="dropdown-item">Profile</a>
-                            <button on:click={handleLogout} class="dropdown-item">Logout</button>
+                <li>
+                    <a href="/about" class={`px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all ${$page.url.pathname === '/about' ? 'text-blue-600 dark:text-blue-400 font-medium' : 'text-gray-700 dark:text-gray-300'}`}>
+                        <i class="fas fa-info-circle mr-1"></i> About
+                    </a>                </li>
+                  <!-- Authentication Links -->
+                {#if $authStore.isAuthenticated}                    <li class="relative group">
+                        <button class="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all">
+                            <i class="fas fa-user-circle mr-1"></i>
+                            <span>{$authStore.user?.username || 'User'}</span>
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute right-0 w-48 py-2 mt-1 bg-white dark:bg-gray-800 rounded-lg shadow-xl invisible group-hover:visible z-10 border border-gray-200 dark:border-gray-700 transition-all">
+                            <a href="/profile" class="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-500 hover:text-white transition-colors">
+                                <i class="fas fa-id-card mr-2"></i> Profile
+                            </a>
+                            <button on:click={handleLogout} class="flex items-center w-full text-left px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-500 hover:text-white transition-colors">
+                                <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                            </button>
                         </div>
-                    </li>
-                {:else}
-                    <li class="nav-item">
-                        <a href="/login" class="nav-link" class:active={$page.url.pathname === '/login'}>
-                            Login
+                    </li>{:else}                    <li>
+                        <a href="/login" class={`px-4 py-2 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-all ${$page.url.pathname === '/login' ? 'text-blue-600 dark:text-blue-400 font-bold' : 'text-gray-700 dark:text-gray-300'}`}>
+                            <i class="fas fa-sign-in-alt mr-1"></i> Login
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="/register" class="nav-link" class:active={$page.url.pathname === '/register'}>
-                            Register
+                    <li>
+                        <a href="/register" class={`px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all shadow-sm ${$page.url.pathname === '/register' ? 'font-bold' : ''}`}>
+                            <i class="fas fa-user-plus mr-1"></i> Register
                         </a>
                     </li>
                 {/if}
@@ -85,50 +74,5 @@
 </header>
 
 <style>
-    .active {
-        font-weight: bold;
-        color: var(--primary);
-    }
-    
-    .dropdown {
-        position: relative;
-    }
-    
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        right: 0;
-        top: 100%;
-        background-color: white;
-        min-width: 160px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        z-index: 10;
-        border-radius: 4px;
-    }
-    
-    .dropdown:hover .dropdown-menu {
-        display: block;
-    }
-    
-    .dropdown-item {
-        display: block;
-        width: 100%;
-        padding: 8px 16px;
-        text-align: left;
-        color: #333;
-        text-decoration: none;
-        border: none;
-        background: none;
-        cursor: pointer;
-        font-size: 14px;
-    }
-    
-    .dropdown-item:hover {
-        background-color: #f5f5f5;
-    }
-    
-    .user-menu {
-        display: flex;
-        align-items: center;
-    }
+    /* All styling handled by Tailwind CSS classes */
 </style>

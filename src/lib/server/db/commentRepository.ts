@@ -54,6 +54,16 @@ export async function getCommentsByScriptId(scriptId: string): Promise<CommentIn
     return comments.map(documentToComment);
 }
 
+// Get comments by user ID
+export async function getCommentsByUserId(username: string): Promise<CommentInterface[]> {
+    await connectToDatabase();
+    
+    const comments = await Comment.find({ username })
+        .sort({ createdAt: -1 });
+    
+    return comments.map(documentToComment);
+}
+
 // Delete a comment
 export async function deleteComment(commentId: string, userId: string): Promise<boolean> {
     await connectToDatabase();

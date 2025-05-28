@@ -7,20 +7,11 @@
     import { filteredScripts, filterScripts, fetchScripts, isLoading, error } from '$lib/stores/scriptStore';    import { onMount } from 'svelte';
     import { page } from '$app/stores';
     import type { ScriptCategory } from '$lib/data/scripts';
-    
-    // Fetch scripts and reset filters on page load
+      // Fetch scripts and reset filters on page load
     onMount(async () => {
         // Fetch scripts from the database
         await fetchScripts();
-        
-        // Get category from URL if present
-        const urlCategory = $page.url.searchParams.get('category');
-        
-        if (urlCategory) {
-            filterScripts('', [urlCategory as ScriptCategory]);
-        } else {
-            filterScripts('', []);
-        }
+        filterScripts('', []);
     });
 </script>
 
@@ -31,58 +22,52 @@
 
 <Header />
 
-<main>
-    <section class="page-header">
-        <div class="container">
-            <h1>Browse Scripts</h1>
-            <p>Discover and download Python automation scripts for your projects</p>
+<main class="min-h-screen">
+    <section class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl md:text-4xl font-bold mb-2">Browse Scripts</h1>
+            <p class="text-xl text-gray-300">Discover and download Python automation scripts for your projects</p>
         </div>
     </section>
     
-    <section class="scripts-content py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <SearchFilters />
-                </div>
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="mb-8">
+                <SearchFilters />
             </div>
             
-            <div class="row">
+            <div>
                 {#if $isLoading}
-                    <div class="col">
-                        <div class="loading-container text-center py-5">
-                            <div class="loading-spinner mb-3"></div>
-                            <p>Loading scripts...</p>
-                        </div>
+                    <div class="text-center py-16">
+                        <div class="inline-block w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
+                        <p class="text-lg">Loading scripts...</p>
                     </div>
                 {:else if $error}
-                    <div class="col">
-                        <div class="error-container text-center py-5">
-                            <i class="fas fa-exclamation-circle fa-3x mb-3" style="color: var(--danger);"></i>
-                            <h3>Error Loading Scripts</h3>
-                            <p>{$error}</p>
-                            <button class="button button-primary mt-3" on:click={() => fetchScripts()}>
-                                Try Again
-                            </button>
-                        </div>
+                    <div class="text-center py-16">
+                        <i class="fas fa-exclamation-circle text-5xl text-danger mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Error Loading Scripts</h3>
+                        <p class="mb-6 text-gray-600 dark:text-gray-300">{$error}</p>
+                        <button class="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg transition-colors" on:click={() => fetchScripts()}>
+                            Try Again
+                        </button>
                     </div>
                 {:else if $filteredScripts.length === 0}
-                    <div class="col">
-                        <div class="empty-results text-center py-5">
-                            <i class="fas fa-search fa-3x mb-3"></i>
-                            <h3>No Scripts Found</h3>
-                            <p>Try adjusting your search criteria or browse all scripts.</p>
-                            <button class="button button-primary mt-3" on:click={() => filterScripts('', [])}>
-                                View All Scripts
-                            </button>
-                        </div>
+                    <div class="text-center py-16">
+                        <i class="fas fa-search text-5xl text-gray-400 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">No Scripts Found</h3>
+                        <p class="mb-6 text-gray-600 dark:text-gray-300">Try adjusting your search criteria or browse all scripts.</p>
+                        <button class="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg transition-colors" on:click={() => filterScripts('', [])}>
+                            View All Scripts
+                        </button>
                     </div>
                 {:else}
-                    {#each $filteredScripts as script}
-                        <div class="col-md-6 mb-4">
-                            <ScriptCard {script} />
-                        </div>
-                    {/each}
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {#each $filteredScripts as script}
+                            <div>
+                                <ScriptCard {script} />
+                            </div>
+                        {/each}
+                    </div>
                 {/if}
             </div>
         </div>
@@ -92,21 +77,5 @@
 <Footer />
 
 <style>
-    main {
-        min-height: 100vh;
-    }
-    
-    .page-header {
-        padding: 3rem 0;
-        background-color: var(--gray-800);
-        color: var(--white);
-    }
-    
-    .page-header h1 {
-        margin-bottom: 0.5rem;
-    }
-    
-    .empty-results {
-        color: var(--gray-600);
-    }
+    /* All styling handled by Tailwind CSS classes */
 </style>

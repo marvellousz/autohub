@@ -67,105 +67,102 @@
 
 <Header />
 
-<main>
+<main class="min-h-screen">
     {#if $isLoading || scriptLoading}
-        <section class="loading-section py-5">
-            <div class="container text-center">
-                <div class="loading-spinner mb-3"></div>
-                <p>Loading script details...</p>
+        <section class="py-16">
+            <div class="container mx-auto px-4 text-center">
+                <div class="inline-block w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
+                <p class="text-lg">Loading script details...</p>
             </div>
         </section>
     {:else if $error}
-        <section class="error-section py-5">
-            <div class="container text-center">
-                <i class="fas fa-exclamation-circle fa-3x mb-3" style="color: var(--danger);"></i>
-                <h2>Error Loading Script</h2>
-                <p>{$error}</p>
-                <button class="button button-primary mt-3" on:click={() => fetchScripts()}>
+        <section class="py-16">
+            <div class="container mx-auto px-4 text-center">
+                <i class="fas fa-exclamation-circle text-5xl text-danger mb-4"></i>
+                <h2 class="text-2xl font-bold mb-2">Error Loading Script</h2>
+                <p class="mb-6">{$error}</p>
+                <button class="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg transition-colors" on:click={() => fetchScripts()}>
                     Try Again
                 </button>
             </div>
         </section>
     {:else if script}
-        <section class="page-header">
-            <div class="container">
-                <h1>{script.title}</h1>
-                <div class="script-meta">
+        <section class="bg-gray-800 text-white py-12">
+            <div class="container mx-auto px-4">
+                <h1 class="text-3xl md:text-4xl font-bold mb-2">{script.title}</h1>
+                <div class="text-gray-300">
                     <span>By <strong>{script.author}</strong></span>
-                    <span>• {formatDate(script.dateAdded)}</span>
-                    <span>• {script.downloadCount} downloads</span>
+                    <span class="mx-2">•</span>
+                    <span>{formatDate(script.dateAdded)}</span>
+                    <span class="mx-2">•</span>
+                    <span>{script.downloadCount} downloads</span>
                 </div>
             </div>
         </section>
-        
-        <section class="script-content py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h2 class="card-title mb-3">Description</h2>
-                                <p class="card-text">{script.description}</p>
-                                
-                                <div class="tags mt-4">
-                                    {#each script.tags as tag}
-                                        <span class="tag">{tag}</span>
-                                    {/each}
-                                    <span class="badge badge-secondary ml-2">{script.category}</span>
-                                </div>
+          <section class="py-12">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <div class="lg:col-span-8">
+                        <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 mb-8">
+                            <h2 class="text-2xl font-bold mb-4">Description</h2>
+                            <p class="text-gray-700 dark:text-gray-300">{script.description}</p>
+                            
+                            <div class="flex flex-wrap gap-2 mt-6">
+                                {#each script.tags as tag}
+                                    <span class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">{tag}</span>
+                                {/each}
+                                <span class="inline-block bg-gray-600 text-white px-3 py-1 rounded-full text-sm">{script.category}</span>
                             </div>
                         </div>
                         
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h2 class="card-title mb-3">Source Code</h2>
-                                <CodePreview code={script.code} language="python" />
-                            </div>
+                        <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 mb-8">
+                            <h2 class="text-2xl font-bold mb-4">Source Code</h2>
+                            <CodePreview code={script.code} language="python" />
                         </div>
                     </div>
-                    
-                    <div class="col-lg-4">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h3 class="mb-4">Actions</h3>
+                      <div class="lg:col-span-4">
+                        <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 mb-8">
+                            <h3 class="text-xl font-bold mb-6">Actions</h3>
+                              <div class="flex flex-col gap-3">
+                <button 
+                                    class="w-full border border-gray-300 dark:border-gray-600 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 px-4 py-2 transition-all shadow-sm hover:shadow flex items-center justify-center text-sm" 
+                                    on:click={handleDownload}
+                                >
+                                    <i class="fas fa-download mr-2"></i> Download Script
+                                </button>
                                 
-                                <div class="script-actions-vertical">
-                                    <button class="button button-primary mb-3 w-100" on:click={handleDownload}>
-                                        <i class="fas fa-download"></i> Download Script
-                                    </button>
-                                    
-                                    <button class="button button-outline mb-3 w-100" on:click={handleCopy}>
-                                        {#if copying}
-                                            <i class="fas fa-check"></i> Copied!
-                                        {:else}
-                                            <i class="fas fa-copy"></i> Copy Code
-                                        {/if}
-                                    </button>
-                                </div>
+                                <button 
+                                    class="w-full border border-gray-300 dark:border-gray-600 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 px-4 py-2 transition-all shadow-sm hover:shadow flex items-center justify-center text-sm" 
+                                    on:click={handleCopy}
+                                >
+                                    {#if copying}
+                                        <i class="fas fa-check mr-2"></i> Copied!
+                                    {:else}
+                                        <i class="fas fa-copy mr-2"></i> Copy Code
+                                    {/if}
+                                </button>
                             </div>
                         </div>
                         
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h3 class="mb-3">Similar Scripts</h3>
-                                
-                                {#if $scripts.filter(s => s.id !== script.id && s.category === script.category).length === 0}
-                                    <p>No similar scripts found.</p>
-                                {:else}
-                                    <ul class="similar-scripts">
-                                        {#each $scripts.filter(s => s.id !== script.id && s.category === script.category).slice(0, 3) as similarScript}
-                                            <li>
-                                                <a href="/scripts/{similarScript.id}">{similarScript.title}</a>
-                                                <div class="tags mini-tags">
-                                                    {#each similarScript.tags.slice(0, 2) as tag}
-                                                        <span class="mini-tag">{tag}</span>
-                                                    {/each}
-                                                </div>
-                                            </li>
-                                        {/each}
-                                    </ul>
-                                {/if}
-                            </div>
+                        <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 mb-8">
+                            <h3 class="text-xl font-bold mb-4">Similar Scripts</h3>
+                            
+                            {#if $scripts.filter(s => s.id !== script.id && s.category === script.category).length === 0}
+                                <p class="text-gray-600 dark:text-gray-300">No similar scripts found.</p>
+                            {:else}
+                                <ul class="divide-y divide-gray-200 dark:divide-gray-600">
+                                    {#each $scripts.filter(s => s.id !== script.id && s.category === script.category).slice(0, 3) as similarScript}
+                                        <li class="py-3 first:pt-0 last:pb-0">
+                                            <a href="/scripts/{similarScript.id}" class="text-primary hover:underline font-medium">{similarScript.title}</a>
+                                            <div class="flex flex-wrap gap-1 mt-1">
+                                                {#each similarScript.tags.slice(0, 2) as tag}
+                                                    <span class="inline-block bg-primary/10 text-primary text-xs px-2 py-0.5 rounded-full">{tag}</span>
+                                                {/each}
+                                            </div>
+                                        </li>
+                                    {/each}
+                                </ul>
+                            {/if}
                         </div>
                     </div>
                 </div>
@@ -173,14 +170,13 @@
         </section>
         
         <!-- Comments Section -->
-        <CommentSection scriptId={scriptId} />
-    {:else}
-        <section class="not-found py-5">
-            <div class="container text-center">
-                <i class="fas fa-exclamation-triangle fa-3x mb-3"></i>
-                <h2>Script Not Found</h2>
-                <p>The script you're looking for doesn't exist or has been removed.</p>
-                <a href="/scripts" class="button button-primary mt-3">Browse All Scripts</a>
+        <CommentSection scriptId={scriptId} />    {:else}
+        <section class="py-16">
+            <div class="container mx-auto px-4 text-center">
+                <i class="fas fa-exclamation-triangle text-5xl text-yellow-500 mb-4"></i>
+                <h2 class="text-2xl font-bold mb-2">Script Not Found</h2>
+                <p class="mb-6 text-gray-600 dark:text-gray-300">The script you're looking for doesn't exist or has been removed.</p>
+                <a href="/scripts" class="inline-block bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg transition-colors">Browse All Scripts</a>
             </div>
         </section>
     {/if}
@@ -189,65 +185,5 @@
 <Footer />
 
 <style>
-    main {
-        min-height: 100vh;
-    }
-    
-    .page-header {
-        padding: 3rem 0;
-        background-color: var(--gray-800);
-        color: var(--white);
-    }
-    
-    .page-header h1 {
-        margin-bottom: 0.5rem;
-    }
-    
-    .script-meta {
-        font-size: 1rem;
-        color: var(--gray-300);
-    }
-    
-    .script-actions-vertical {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .w-100 {
-        width: 100%;
-    }
-    
-    .similar-scripts {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    
-    .similar-scripts li {
-        padding: 0.75rem 0;
-        border-bottom: 1px solid var(--gray-200);
-    }
-    
-    .similar-scripts li:last-child {
-        border-bottom: none;
-    }
-    
-    .mini-tags {
-        margin-top: 0.25rem;
-    }
-    
-    .mini-tag {
-        display: inline-block;
-        padding: 0.1rem 0.3rem;
-        margin-right: 0.3rem;
-        font-size: 0.65rem;
-        line-height: 1;
-        border-radius: 10rem;
-        color: var(--white);
-        background-color: var(--primary);
-    }
-    
-    .not-found {
-        color: var(--gray-600);
-    }
+    /* All styling handled by Tailwind CSS classes */
 </style>

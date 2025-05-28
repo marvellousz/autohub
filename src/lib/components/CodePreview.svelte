@@ -21,62 +21,22 @@
     }
 </script>
 
-<div class="code-preview-wrapper">
-    <div class="code-preview-header">
-        <span>{language}</span>
-        <button class="copy-button" on:click={handleCopy}>
+<div class="my-4 rounded overflow-hidden border border-gray-300 dark:border-gray-600">
+    <div class="bg-gray-800 text-gray-200 px-4 py-2 flex justify-between items-center">
+        <span class="font-mono text-sm">{language}</span>
+        <button 
+            class="px-2 py-1 rounded text-sm border border-gray-400 text-gray-200 hover:bg-gray-700 transition-colors"
+            on:click={handleCopy}
+        >
             {#if copying}
-                <i class="fas fa-check"></i> Copied!
+                <i class="fas fa-check mr-1"></i> Copied!
             {:else}
-                <i class="fas fa-copy"></i> Copy
+                <i class="fas fa-copy mr-1"></i> Copy
             {/if}
         </button>
-    </div>
-    <pre class="code-preview"><code>{code}</code></pre>
+    </div>    <pre class="m-0 bg-gray-900 text-gray-200 font-mono text-sm leading-relaxed overflow-x-auto max-h-[400px] overflow-y-auto"><code class="block p-4">{code}</code></pre>
 </div>
 
 <style>
-    .code-preview-wrapper {
-        margin: 1rem 0;
-        border-radius: 0.25rem;
-        overflow: hidden;
-        border: 1px solid var(--gray-300);
-    }
-    
-    .code-preview-header {
-        background-color: var(--gray-800);
-        color: var(--gray-200);
-        padding: 0.5rem 1rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .copy-button {
-        background: transparent;
-        border: 1px solid var(--gray-400);
-        color: var(--gray-200);
-        padding: 0.25rem 0.5rem;
-        border-radius: 0.25rem;
-        font-size: 0.8rem;
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
-    
-    .copy-button:hover {
-        background-color: var(--gray-700);
-    }
-    
-    .code-preview {
-        margin: 0;
-        padding: 1rem;
-        background-color: var(--gray-900);
-        color: var(--gray-200);
-        font-family: var(--font-mono);
-        font-size: 0.9rem;
-        line-height: 1.5;
-        overflow-x: auto;
-        max-height: 400px;
-        overflow-y: auto;
-    }
+    /* All styling handled by Tailwind CSS classes */
 </style>

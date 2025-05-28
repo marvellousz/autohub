@@ -30,43 +30,46 @@
     }
 </script>
 
-<div class="card mb-4">
-    <div class="card-body">
-        <h2 class="card-title">
-            <a href="/scripts/{script.id}" class="script-title">{script.title}</a>
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden h-full border border-gray-200 dark:border-gray-700">
+    <div class="p-5">
+        <h2 class="text-xl font-bold mb-2">
+            <a href="/scripts/{script.id}" class="text-gray-800 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition duration-200">{script.title}</a>
         </h2>
-        
-        <div class="tags mb-2">
+          <div class="mb-3 flex flex-wrap gap-2">
             {#each script.tags as tag}
-                <span class="tag">{tag}</span>
+                <span class="bg-blue-100 dark:bg-blue-800/40 text-blue-800 dark:text-blue-300 text-xs px-2 py-1 rounded-full">{tag}</span>
             {/each}
-            <span class="badge badge-secondary ml-2">{script.category}</span>
         </div>
         
-        <p class="card-text">{truncateText(script.description, 150)}</p>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">{truncateText(script.description, 150)}</p>
         
-        <div class="script-meta mb-3">
-            <small>
-                By <strong>{script.author}</strong> • 
-                {script.downloadCount} downloads
-            </small>
-        </div>
-        
-        <div class="script-actions">
-            <button class="button button-outline" on:click={handleCopy}>
+        <div class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+            By <span class="font-medium text-gray-700 dark:text-gray-300">{script.author}</span> • 
+            {script.downloadCount} downloads
+        </div>        <div class="flex space-x-2">
+            <button 
+                class="px-3 py-1.5 border border-gray-300 dark:border-gray-600 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center text-sm shadow-sm hover:shadow transition-all" 
+                on:click={handleCopy}
+            >
                 {#if copying}
-                    <i class="fas fa-check"></i> Copied!
+                    <i class="fas fa-check mr-1"></i> Copied!
                 {:else}
-                    <i class="fas fa-copy"></i>
+                    <i class="fas fa-copy mr-1"></i> Copy
                 {/if}
             </button>
             
-            <button class="button button-primary" on:click={handleDownload}>
-                <i class="fas fa-download"></i>
+            <button 
+                class="px-3 py-1.5 bg-blue-600 dark:bg-blue-700 rounded text-white hover:bg-blue-700 dark:hover:bg-blue-600 flex items-center text-sm shadow-sm hover:shadow transition-all" 
+                on:click={handleDownload}
+            >
+                <i class="fas fa-download mr-1"></i> Download
             </button>
             
-            <a href="/scripts/{script.id}" class="button button-secondary">
-                <i class="fas fa-eye"></i>
+            <a 
+                href="/scripts/{script.id}" 
+                class="px-3 py-1.5 bg-gray-700 dark:bg-gray-800 rounded text-white hover:bg-gray-800 dark:hover:bg-gray-700 flex items-center text-sm shadow-sm hover:shadow transition-all"
+            >
+                <i class="fas fa-eye mr-1"></i> View
             </a>
         </div>
     </div>

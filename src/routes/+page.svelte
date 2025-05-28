@@ -28,200 +28,81 @@
 
 <Header />
 
-<main>
-    <section class="hero">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h1 class="hero-title">Discover Python Automation Scripts</h1>
-                    <p class="hero-subtitle">Browse, search, and download curated Python scripts to automate your tasks.</p>
-                    <div class="hero-actions">
-                        <a href="/scripts" class="button button-primary">Browse Scripts</a>
-                        <a href="/submit" class="button button-outline" style="color: white; border-color: white;">Submit Your Script</a>
-                    </div>
-                </div>
+<main class="min-h-screen">    <section class="py-20 bg-blue-600 dark:bg-blue-800 text-white text-center">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Discover Python Automation Scripts</h1>
+            <p class="text-xl mb-8 text-white/90">Browse, search, and download curated Python scripts to automate your tasks.</p><div class="flex flex-col sm:flex-row gap-4 justify-center">                <a href="/scripts" class="border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 px-6 py-3 transition-all shadow-sm hover:shadow text-sm font-medium flex items-center justify-center">
+                    <i class="fas fa-search mr-2"></i> Browse Scripts
+                </a>
+                <a href="/submit" class="border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 px-6 py-3 transition-all shadow-sm hover:shadow text-sm font-medium flex items-center justify-center">
+                    <i class="fas fa-upload mr-2"></i> Submit Your Script
+                </a>
             </div>
         </div>
     </section>
-    
-    <section class="features py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">Why Use AutoHub?</h2>
+      <section class="py-16 bg-gray-50 dark:bg-gray-800/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 dark:text-white">Why Use AutoHub?</h2>
             
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="feature-card text-center mb-4">
-                        <i class="fas fa-search feature-icon"></i>
-                        <h3>Discover</h3>
-                        <p>Find automation scripts for various tasks from web scraping to file operations.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 text-center hover:shadow-lg transition-shadow border border-gray-200 dark:border-gray-700">
+                    <div class="inline-block p-3 bg-blue-100 dark:bg-blue-900/50 rounded-full mb-4">
+                        <i class="fas fa-search text-3xl text-blue-600 dark:text-blue-400"></i>
                     </div>
+                    <h3 class="text-xl font-semibold mb-3 dark:text-white">Discover</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Find automation scripts for various tasks from web scraping to file operations.</p>
                 </div>
                 
-                <div class="col-md-4">
-                    <div class="feature-card text-center mb-4">
-                        <i class="fas fa-download feature-icon"></i>
-                        <h3>Download</h3>
-                        <p>Easily download ready-to-use Python scripts to solve your automation needs.</p>
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 text-center hover:shadow-lg transition-shadow border border-gray-200 dark:border-gray-700">
+                    <div class="inline-block p-3 bg-green-100 dark:bg-green-900/50 rounded-full mb-4">
+                        <i class="fas fa-download text-3xl text-green-600 dark:text-green-400"></i>
                     </div>
+                    <h3 class="text-xl font-semibold mb-3 dark:text-white">Download</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Easily download ready-to-use Python scripts to solve your automation needs.</p>
                 </div>
                 
-                <div class="col-md-4">
-                    <div class="feature-card text-center mb-4">
-                        <i class="fas fa-share-alt feature-icon"></i>
-                        <h3>Share</h3>
-                        <p>Contribute your own automation scripts to help the Python community.</p>
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 text-center hover:shadow-lg transition-shadow border border-gray-200 dark:border-gray-700">
+                    <div class="inline-block p-3 bg-purple-100 dark:bg-purple-900/50 rounded-full mb-4">
+                        <i class="fas fa-share-alt text-3xl text-purple-600 dark:text-purple-400"></i>
                     </div>
+                    <h3 class="text-xl font-semibold mb-3 dark:text-white">Share</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Contribute your own automation scripts to help the Python community.</p>
                 </div>
             </div>
         </div>
     </section>
-    
-    <section class="featured py-5" style="background-color: var(--gray-100);">
-        <div class="container">
-            <h2 class="text-center mb-5">Featured Scripts</h2>
+      <section class="py-16 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Featured Scripts</h2>
             
             {#if $isLoading}
-                <div class="text-center py-5">
-                    <div class="loading-spinner mb-3"></div>
+                <div class="text-center py-12">
+                    <div class="inline-block w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
                     <p>Loading scripts...</p>
                 </div>
             {:else if featuredScripts.length === 0}
-                <div class="text-center py-5">
-                    <p>No scripts found. Be the first to submit one!</p>
-                    <a href="/submit" class="button button-primary mt-3">Submit a Script</a>
+                <div class="text-center py-12">
+                    <p class="mb-4">No scripts found. Be the first to submit one!</p>
+                    <a href="/submit" class="bg-primary text-white hover:bg-primary-dark px-6 py-2 rounded-lg transition-colors">Submit a Script</a>
                 </div>
             {:else}
-                <div class="row">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {#each featuredScripts as script}
-                        <div class="col-md-6 col-lg-3 mb-4">
+                        <div>
                             <ScriptCard {script} />
                         </div>
                     {/each}
                 </div>
-            {/if}
-            
-            <div class="text-center mt-4">
-                <a href="/scripts" class="button button-primary">View All Scripts</a>
-            </div>
-        </div>
-    </section>
-    
-    <section class="categories py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">Browse By Category</h2>
-            
-            <div class="row">
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <a href="/scripts?category=Web%20Scraping" class="category-card">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <i class="fas fa-spider category-icon"></i>
-                                <h3>Web Scraping</h3>
-                                <p>Extract data from websites</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <a href="/scripts?category=File%20Automation" class="category-card">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <i class="fas fa-file-code category-icon"></i>
-                                <h3>File Automation</h3>
-                                <p>Process and organize files</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <a href="/scripts?category=API%20Integration" class="category-card">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <i class="fas fa-exchange-alt category-icon"></i>
-                                <h3>API Integration</h3>
-                                <p>Connect with web services</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <a href="/scripts?category=Data%20Processing" class="category-card">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <i class="fas fa-database category-icon"></i>
-                                <h3>Data Processing</h3>
-                                <p>Transform and analyze data</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+            {/if}        <div class="text-center mt-8">
+                <a href="/scripts" class="inline-flex items-center border border-gray-300 dark:border-gray-600 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 px-4 py-2 transition-all shadow-sm hover:shadow text-sm font-medium">
+                    <i class="fas fa-list mr-2"></i> View All Scripts
+                </a>
+            </div>        </div>    
     </section>
 </main>
 
 <Footer />
 
 <style>
-    main {
-        min-height: 100vh;
-    }
-    
-    .hero {
-        padding: 5rem 0;
-        background-color: var(--primary);
-        color: var(--white);
-        text-align: center;
-    }
-    
-    .hero-title {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.25rem;
-        margin-bottom: 2rem;
-        opacity: 0.9;
-    }
-    
-    .hero-actions {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-    }
-    
-    .feature-icon, .category-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        color: var(--primary);
-    }
-    
-    .feature-card {
-        padding: 1.5rem;
-        height: 100%;
-    }
-    
-    .category-card {
-        display: block;
-        color: inherit;
-        height: 100%;
-    }
-    
-    .category-card:hover {
-        text-decoration: none;
-    }
-    
-    .category-card .card {
-        height: 100%;
-        transition: transform 0.3s ease;
-    }
-    
-    .category-card:hover .card {
-        transform: translateY(-5px);
-    }
+    /* All styling handled by Tailwind CSS classes */
 </style>

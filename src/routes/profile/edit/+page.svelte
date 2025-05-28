@@ -108,32 +108,35 @@
         
         <form on:submit|preventDefault={handleSubmit} class="bg-white p-6 rounded shadow-sm">
             <div class="mb-4">
-                <label for="username" class="block mb-2 font-medium">Username</label>
-                <input
+                <label for="username" class="block mb-2 font-medium">Username</label>                <input
                     type="text"
                     id="username"
                     bind:value={username}
-                    class="w-full p-2 border rounded"
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded hover:border-gray-400 dark:hover:border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white transition-colors cursor-text"
                     disabled={isLoading}
                     required
                 />
             </div>
             
             <div class="mb-6">
-                <label for="bio" class="block mb-2 font-medium">Bio</label>
+                <label for="bio" class="block mb-2 font-medium dark:text-gray-200">Bio</label>
                 <textarea
                     id="bio"
                     bind:value={bio}
-                    class="w-full p-2 border rounded resize-none"
+                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded hover:border-gray-400 dark:hover:border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none dark:bg-gray-700 dark:text-white transition-colors cursor-text"
                     rows="4"
                     disabled={isLoading}
                     placeholder="Tell us a bit about yourself (optional)"
                 ></textarea>
             </div>
             
-            <div class="flex justify-between">
-                <a href="/profile" class="btn btn-secondary">Cancel</a>
-                <button type="submit" class="btn btn-primary" disabled={isLoading}>
+            <div class="flex justify-between space-x-4">
+                <a href="/profile" class="border border-gray-300 dark:border-gray-600 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 px-4 py-2 transition-all shadow-sm hover:shadow text-sm font-medium">Cancel</a>
+                <button 
+                    type="submit" 
+                    disabled={isLoading}
+                    class="border border-gray-300 dark:border-gray-600 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 px-4 py-2 transition-all shadow-sm hover:shadow flex items-center justify-center text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                >
                     {isLoading ? 'Saving...' : 'Save Changes'}
                 </button>
             </div>
@@ -142,34 +145,3 @@
 </div>
 
 <Footer />
-
-<style>
-    .btn {
-        display: inline-block;
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        border-radius: 0.25rem;
-        cursor: pointer;
-        text-decoration: none;
-        transition: background-color 0.2s;
-    }
-    
-    .btn-primary {
-        background-color: var(--primary);
-        color: white;
-        border: none;
-    }
-    
-    .btn-primary:hover {
-        background-color: var(--primary-dark);
-    }
-    
-    .btn-secondary {
-        background-color: #f8f9fa;
-        color: #333;
-    }
-    
-    .btn-secondary:hover {
-        background-color: #e9ecef;
-    }
-</style>

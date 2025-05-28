@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+/* Custom styles that can't be easily handled with Tailwind utility classes */
+:root {
+  /* Light theme colors */
+  --background: 248 249 250;
+  --surface: 255 255 255;
+  --text-primary: 33 37 41;
+  --text-secondary: 73 80 87;
+  --border-color: 222 226 230;
+}
+
+:root.dark {
+  --background: 26 26 26;
+  --surface: 45 45 45;
+  --text-primary: 224 224 224;
+  --text-secondary: 160 160 160;
+  --border-color: 64 64 64;
+}
+
+/* Basic styles */
+body {
+  background-color: rgb(var(--background));
+  color: rgb(var(--text-primary));
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make sure the app container fills the viewport height */
+#app, div:has(> .flex-grow) {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom component classes */
+.btn {
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  text-align: center;
+  display: inline-block;
+  transition-property: color, background-color;
+  transition-duration: 150ms;
+  cursor: pointer;
+}
+
+/* Add pointer cursor to all button-like elements */
+button, 
+a[href],
+a.block,
+.cursor-pointer,
+[role="button"],
+input[type="submit"], 
+input[type="button"],
+input[type="reset"] {
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #5663f6;
+  color: white;
+}
+.btn-primary:hover {
+  background-color: #404ad0;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+.btn-secondary:hover {
+  opacity: 0.9;
+}
