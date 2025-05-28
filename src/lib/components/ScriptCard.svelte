@@ -76,21 +76,5 @@
 </div>
 
 <style>
-    .script-title {
-        color: var(--dark);
-        transition: color 0.2s;
-    }
-    
-    .script-title:hover {
-        color: var(--primary);
-        text-decoration: none;
-    }
-    
-    .script-meta {
-        color: var(--gray-600);
-    }
-    
-    .ml-2 {
-        margin-left: 0.5rem;
-    }
+    /* All styling handled by Tailwind CSS classes */
 </style>

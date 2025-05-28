@@ -199,13 +199,13 @@
                         </div>
                         <p class="text-xs text-gray-700 dark:text-gray-300 break-words">{comment.content}</p>
                         {#if $authStore.isAuthenticated && ($authStore.user?.id === comment.userId || $authStore.user?.id === authorId)}
-                            <div class="flex justify-end mt-0.5">
-                                <button
+                            <div class="flex justify-end mt-0.5">                                <button
                                     on:click={() => deleteComment(comment.id, comment.userId)}
                                     class="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 p-0.5 rounded-sm transition-colors"
                                     title="Delete comment"
+                                    aria-label="Delete comment"
                                 >
-                                    <i class="fas fa-trash-alt text-xs"></i>
+                                    <i class="fas fa-trash-alt text-xs" aria-hidden="true"></i>
                                 </button>
                             </div>
                         {/if}
