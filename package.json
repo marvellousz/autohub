@@ -1,8 +1,24 @@
 {
 	"name": "autohub",
+	"version": "1.0.0",
 	"private": true,
-	"version": "0.0.1",
 	"type": "module",
+	"description": "A modern platform for discovering, sharing, and collaborating on automation scripts",
+	"author": "AutoHub Team",
+	"homepage": "https://autohub.dev",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/autohub/autohub"
+	},
+	"keywords": [
+		"automation",
+		"python",
+		"scripts",
+		"developer-tools",
+		"code-sharing",
+		"svelte",
+		"sveltekit"
+	],
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -21,6 +37,7 @@
 		"@tailwindcss/vite": "^4.1.7",
 		"autoprefixer": "^10.4.21",
 		"postcss": "^8.5.3",
+		"sharp": "^0.34.2",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
 		"tailwindcss": "^4.1.7",
