@@ -96,7 +96,7 @@ autohub/
 └── vite.config.ts     # Vite configuration
 ```
 
-## 🧪 Running Tests
+## Running Tests
 
 ```bash
 # Run unit tests
@@ -106,7 +106,7 @@ npm run test
 npm run test:watch
 ```
 
-## 🔧 Scripts
+## Scripts
 
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
@@ -123,7 +123,7 @@ npm run test:watch
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
