@@ -1,27 +1,42 @@
-# AutoHub - Python Automation Scripts Platform
+# AutoHub 🤖
 
-AutoHub is a web platform built with SvelteKit where users can browse, search, and download curated Python automation scripts. The application features a clean, responsive UI and provides functionality for users to submit their own scripts.
+AutoHub is a modern web platform built with SvelteKit that enables developers to discover, share, and collaborate on automation scripts. With a sleek, responsive design and powerful features, AutoHub makes it easy to find and contribute to the automation community.
 
-## Features
+## ✨ Features
 
-- **Browse and Search**: Find Python automation scripts by category, tags, or keywords
-- **Script Details**: View detailed information about each script, including code preview
-- **Download Scripts**: Easily download Python scripts to use in your projects
-- **Submit Scripts**: Share your own automation scripts with the community
-- **Responsive Design**: Clean, modern UI that works on all devices
+- **Script Discovery**: Browse and search through a curated collection of automation scripts
+- **Interactive Code Preview**: View script contents with syntax highlighting
+- **User Authentication**: Secure login and registration system
+- **Profile Management**: Personalized user profiles to track contributions
+- **Script Submission**: Easy-to-use interface for sharing your automation scripts
+- **Comments & Discussion**: Engage with the community through script discussions
+- **Dark Mode Support**: Comfortable viewing experience in any lighting condition
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **API Integration**: RESTful endpoints for script management and user interactions
 
-## Technologies Used
+## 🛠️ Technologies
 
-- **Frontend**: SvelteKit, Vanilla CSS, Font Awesome
-- **Backend**: SvelteKit server endpoints for API
-- **Data Storage**: JSON data and file system storage (for demo purposes)
+- **Frontend**:
+  - [SvelteKit](https://kit.svelte.dev/) - Full-stack application framework
+  - [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework
+  - [Font Awesome](https://fontawesome.com/) - Icons and social logos
+- **Backend**:
+  - Node.js server with SvelteKit endpoints
+  - TypeScript for type safety
+- **Authentication**:
+  - JWT-based authentication system
+  - Secure password hashing
+- **Development**:
+  - Vite for fast builds and HMR
+  - TypeScript for enhanced development experience
+  - ESLint and Prettier for code quality
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js 16.x or later
-- npm 7.x or later
+- Node.js (v18 or later)
+- npm (v9 or later)
 
 ### Installation
 
@@ -36,69 +51,88 @@ AutoHub is a web platform built with SvelteKit where users can browse, search, a
    npm install
    ```
 
-3. Start the development server:
+3. Create a `.env` file in the root directory with the following variables:
+   ```env
+   JWT_SECRET=your_secret_key
+   DATABASE_URL=your_database_url
+   ```
+
+4. Start the development server:
    ```bash
    npm run dev
    ```
 
-4. Open your browser and navigate to `http://localhost:5173`
+The application will be available at `http://localhost:5173`.
 
-## Building for Production
+## 📦 Building for Production
 
-To create a production build:
+1. Create a production build:
+   ```bash
+   npm run build
+   ```
+
+2. Preview the production build:
+   ```bash
+   npm run preview
+   ```
+
+## 📁 Project Structure
+
+```
+autohub/
+├── src/
+│   ├── lib/
+│   │   ├── components/   # Reusable Svelte components
+│   │   ├── auth/         # Authentication logic
+│   │   ├── data/         # Type definitions and models
+│   │   ├── server/       # Server-side utilities
+│   │   ├── stores/       # Svelte stores
+│   │   └── utils/        # Helper functions
+│   ├── routes/           # SvelteKit pages and API routes
+│   └── app.html         # HTML template
+├── static/              # Static assets
+├── tests/              # Test files
+├── tailwind.config.js  # TailwindCSS configuration
+└── vite.config.ts     # Vite configuration
+```
+
+## 🧪 Running Tests
 
 ```bash
-npm run build
+# Run unit tests
+npm run test
+
+# Run tests in watch mode
+npm run test:watch
 ```
 
-To preview the production build:
+## 🔧 Scripts
 
-```bash
-npm run preview
-```
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run test` - Run tests
+- `npm run lint` - Lint code
+- `npm run format` - Format code
 
-## Project Structure
+## 📝 Contributing
 
-- `/src/routes` - SvelteKit pages and API routes
-- `/src/lib/components` - Reusable Svelte components
-- `/src/lib/data` - Data models and sample data
-- `/src/lib/stores` - Svelte stores for state management
-- `/src/lib/utils` - Utility functions
-- `/src/lib/server` - Server-side utilities
-- `/static` - Static assets and CSS
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## License
+## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## 👏 Acknowledgments
 
-- Built with SvelteKit
-- Icons by Font Awesome
-- Sample scripts created for demonstration purposes
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
+- Built with [SvelteKit](https://kit.svelte.dev/)
+- Styled with [TailwindCSS](https://tailwindcss.com/)
+- Icons by [Font Awesome](https://fontawesome.com/)
+- Community contributions welcome!
 
 You can preview the production build with `npm run preview`.
 
