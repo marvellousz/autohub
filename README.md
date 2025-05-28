@@ -1,8 +1,8 @@
-# AutoHub 🤖
+# AutoHub
 
 AutoHub is a modern web platform built with SvelteKit that enables developers to discover, share, and collaborate on automation scripts. With a sleek, responsive design and powerful features, AutoHub makes it easy to find and contribute to the automation community.
 
-## ✨ Features
+## Features
 
 - **Script Discovery**: Browse and search through a curated collection of automation scripts
 - **Interactive Code Preview**: View script contents with syntax highlighting
@@ -14,7 +14,7 @@ AutoHub is a modern web platform built with SvelteKit that enables developers to
 - **Responsive Design**: Optimized for desktop, tablet, and mobile devices
 - **API Integration**: RESTful endpoints for script management and user interactions
 
-## 🛠️ Technologies
+## Technologies
 
 - **Frontend**:
   - [SvelteKit](https://kit.svelte.dev/) - Full-stack application framework
@@ -31,7 +31,7 @@ AutoHub is a modern web platform built with SvelteKit that enables developers to
   - TypeScript for enhanced development experience
   - ESLint and Prettier for code quality
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -64,7 +64,7 @@ AutoHub is a modern web platform built with SvelteKit that enables developers to
 
 The application will be available at `http://localhost:5173`.
 
-## 📦 Building for Production
+## Building for Production
 
 1. Create a production build:
    ```bash
@@ -76,7 +76,7 @@ The application will be available at `http://localhost:5173`.
    npm run preview
    ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 autohub/
@@ -115,7 +115,7 @@ npm run test:watch
 - `npm run lint` - Lint code
 - `npm run format` - Format code
 
-## 📝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
@@ -127,7 +127,7 @@ npm run test:watch
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👏 Acknowledgments
+## Acknowledgments
 
 - Built with [SvelteKit](https://kit.svelte.dev/)
 - Styled with [TailwindCSS](https://tailwindcss.com/)
