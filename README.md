@@ -1,4 +1,4 @@
-# AutoHub
+# autohub
 
 AutoHub is a modern web platform built with SvelteKit that enables developers to discover, share, and collaborate on automation scripts. With a sleek, responsive design and powerful features, AutoHub makes it easy to find and contribute to the automation community.
 
