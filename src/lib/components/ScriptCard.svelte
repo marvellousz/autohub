@@ -41,14 +41,14 @@
             {/each}
         </div>
         
-        <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">{truncateText(script.description, 150)}</p>
+        <p class="text-primary-700 dark:text-primary-300 mb-4 leading-relaxed">{truncateText(script.description, 150)}</p>
         
-        <div class="text-sm text-gray-500 dark:text-gray-400 mb-5 flex items-center">
+        <div class="text-sm text-primary-600 dark:text-primary-400 mb-5 flex items-center">
             <i class="fas fa-user-circle mr-2 text-primary-500"></i>
-            By <span class="font-semibold text-gray-700 dark:text-gray-300 ml-1">{script.author}</span> 
+            By <span class="font-semibold text-primary-700 dark:text-primary-300 ml-1">{script.author}</span> 
             <span class="mx-2">•</span>
             <i class="fas fa-download mr-1 text-secondary-500"></i>
-            <span class="font-semibold">{script.downloadCount}</span> downloads
+            <span class="font-semibold text-secondary-600 dark:text-secondary-400">{script.downloadCount}</span> downloads
         </div>        <div class="flex flex-wrap gap-2">
             <button 
                 class="px-4 py-2 border border-primary-300 dark:border-primary-700 rounded-xl text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-900/30 flex items-center text-sm font-medium shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 group" 

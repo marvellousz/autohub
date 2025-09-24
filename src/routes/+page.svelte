@@ -64,7 +64,7 @@
                         <i class="fas fa-search text-4xl text-primary-600 dark:text-primary-400"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">Discover</h3>
-                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Find automation scripts for various tasks from web scraping to file operations. Explore our curated collection of high-quality Python scripts.</p>
+                    <p class="text-primary-700 dark:text-primary-300 leading-relaxed">Find automation scripts for various tasks from web scraping to file operations. Explore our curated collection of high-quality Python scripts.</p>
                 </div>
                 
                 <div class="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 text-center card-hover border border-primary-200 dark:border-primary-800 group">
@@ -72,7 +72,7 @@
                         <i class="fas fa-download text-4xl text-secondary-600 dark:text-secondary-400"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 dark:text-white group-hover:text-secondary-600 dark:group-hover:text-secondary-400 transition-colors">Download</h3>
-                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Easily download ready-to-use Python scripts to solve your automation needs. One-click downloads with instant access to source code.</p>
+                    <p class="text-primary-700 dark:text-primary-300 leading-relaxed">Easily download ready-to-use Python scripts to solve your automation needs. One-click downloads with instant access to source code.</p>
                 </div>
                 
                 <div class="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 text-center card-hover border border-primary-200 dark:border-primary-800 group">
@@ -80,7 +80,7 @@
                         <i class="fas fa-share-alt text-4xl text-accent-600 dark:text-accent-400"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4 dark:text-white group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">Share</h3>
-                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Contribute your own automation scripts to help the Python community. Build your reputation as a developer and help others.</p>
+                    <p class="text-primary-700 dark:text-primary-300 leading-relaxed">Contribute your own automation scripts to help the Python community. Build your reputation as a developer and help others.</p>
                 </div>
             </div>
         </div>
@@ -94,14 +94,14 @@
             {#if $isLoading}
                 <div class="text-center py-16">
                     <div class="inline-block w-12 h-12 border-4 border-primary-500 border-t-transparent rounded-full animate-spin mb-6"></div>
-                    <p class="text-lg text-gray-600 dark:text-gray-400 loading-dots">Loading scripts</p>
+                    <p class="text-lg text-primary-600 dark:text-primary-400 loading-dots">Loading scripts</p>
                 </div>
             {:else if featuredScripts.length === 0}
                 <div class="text-center py-16">
                     <div class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl shadow-xl p-12 max-w-md mx-auto border border-primary-200 dark:border-primary-800">
                         <i class="fas fa-code text-6xl text-primary-500 mb-6"></i>
                         <h3 class="text-2xl font-bold mb-4 dark:text-white">No Scripts Yet</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-8">Be the first to submit an automation script to our community!</p>
+                        <p class="text-primary-700 dark:text-primary-300 mb-8">Be the first to submit an automation script to our community!</p>
                         <a href="/submit" class="btn btn-primary px-8 py-3 text-lg font-semibold">
                             <i class="fas fa-upload mr-2"></i> Submit a Script
                         </a>

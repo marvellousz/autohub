@@ -75,7 +75,7 @@
     <div class="space-y-6">
         <!-- Title -->
         <div>
-            <label for="title" class="block text-lg font-semibold mb-3 dark:text-gray-300 text-gray-800">
+            <label for="title" class="block text-lg font-semibold mb-3 dark:text-primary-300 text-primary-800">
                 <i class="fas fa-tag mr-2 text-primary-500"></i> Title
             </label>
             <input
@@ -86,14 +86,14 @@
                 placeholder="Enter script title"
                 class="w-full px-4 py-3 border border-primary-300 dark:border-primary-700 rounded-xl text-base focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white transition-all duration-300"
             />
-            <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 flex items-center">
+            <p class="text-sm text-primary-500 dark:text-primary-400 mt-2 flex items-center">
                 <i class="fas fa-info-circle mr-2"></i> Give your script a clear, descriptive title
             </p>
         </div>
 
         <!-- Description -->
         <div>
-            <label for="description" class="block text-lg font-semibold mb-3 dark:text-gray-300 text-gray-800">
+            <label for="description" class="block text-lg font-semibold mb-3 dark:text-primary-300 text-primary-800">
                 <i class="fas fa-align-left mr-2 text-secondary-500"></i> Description
             </label>
             <textarea
@@ -104,14 +104,14 @@
                 rows="4"
                 class="w-full px-4 py-3 border border-primary-300 dark:border-primary-700 rounded-xl text-base focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white resize-none transition-all duration-300"
             ></textarea>
-            <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 flex items-center">
+            <p class="text-sm text-primary-500 dark:text-primary-400 mt-2 flex items-center">
                 <i class="fas fa-info-circle mr-2"></i> Explain what your script does and how to use it
             </p>
         </div>
 
         <!-- Code -->
         <div>
-            <label for="code" class="block text-lg font-semibold mb-3 dark:text-gray-300 text-gray-800">
+            <label for="code" class="block text-lg font-semibold mb-3 dark:text-primary-300 text-primary-800">
                 <i class="fas fa-code mr-2 text-accent-500"></i> Code
             </label>
             <textarea
@@ -122,14 +122,14 @@
                 rows="12"
                 class="w-full px-4 py-3 border border-primary-300 dark:border-primary-700 rounded-xl text-sm font-mono focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white transition-all duration-300"
             ></textarea>
-            <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 flex items-center">
+            <p class="text-sm text-primary-500 dark:text-primary-400 mt-2 flex items-center">
                 <i class="fas fa-info-circle mr-2"></i> Your Python code will be validated before submission
             </p>
         </div>
 
         <!-- Tags -->
         <div>
-            <label for="tags" class="block text-lg font-semibold mb-3 dark:text-gray-300 text-gray-800">
+            <label for="tags" class="block text-lg font-semibold mb-3 dark:text-primary-300 text-primary-800">
                 <i class="fas fa-tags mr-2 text-primary-500"></i> Tags
             </label>
             <input
@@ -139,7 +139,7 @@
                 placeholder="Enter tags (comma-separated)"
                 class="w-full px-4 py-3 border border-primary-300 dark:border-primary-700 rounded-xl text-base focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white transition-all duration-300"
             />
-            <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 flex items-center">
+            <p class="text-sm text-primary-500 dark:text-primary-400 mt-2 flex items-center">
                 <i class="fas fa-info-circle mr-2"></i> Add relevant tags to help others find your script (e.g., automation, browser, utility)
             </p>
         </div>

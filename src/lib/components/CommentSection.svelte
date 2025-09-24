@@ -134,7 +134,7 @@
                         placeholder="Share your thoughts..."
                         class="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded hover:border-gray-400 dark:hover:border-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:bg-gray-700 dark:text-white transition-colors resize-none"
                     ></textarea>
-                    <div class="absolute bottom-2 right-2 text-xs text-gray-500 dark:text-gray-400">
+                    <div class="absolute bottom-2 right-2 text-xs text-primary-500 dark:text-primary-400">
                         {newComment.length}
                     </div>
                 </div>
@@ -164,7 +164,7 @@
         {#if isLoading}
             <div class="text-center py-4 max-w-xl">
                 <div class="inline-block h-5 w-5 animate-spin rounded-full border-2 border-solid border-blue-600 dark:border-blue-400 border-r-transparent"></div>
-                <p class="text-sm text-gray-600 dark:text-gray-400">Loading comments...</p>
+                <p class="text-sm text-primary-600 dark:text-primary-400">Loading comments...</p>
             </div>
         {:else if error}
             <div class="bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded p-3 mb-4 text-sm max-w-xl">
@@ -180,7 +180,7 @@
             </div>
         {:else if comments.length === 0}
             <div class="text-center py-4 max-w-xl">
-                <p class="text-gray-500 dark:text-gray-400 text-sm">No comments yet. Start the conversation!</p>
+                <p class="text-primary-500 dark:text-primary-400 text-sm">No comments yet. Start the conversation!</p>
             </div>
         {:else}
             <div class="space-y-2 max-w-xl">
@@ -193,7 +193,7 @@
                                 </div>
                                 <span class="font-medium text-gray-900 dark:text-gray-100 truncate text-xs">{comment.username}</span>
                             </div>
-                            <span class="text-[11px] text-gray-500 dark:text-gray-400 flex items-center shrink-0">
+                            <span class="text-[11px] text-primary-500 dark:text-primary-400 flex items-center shrink-0">
                                 <i class="far fa-clock mr-0.5"></i> {formatDate(comment.createdAt)}
                             </span>
                         </div>
