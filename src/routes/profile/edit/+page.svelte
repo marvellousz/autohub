@@ -90,54 +90,71 @@
 
 <Header />
 
-<div class="container mx-auto px-4 py-8">
-    <div class="max-w-md mx-auto">
-        <h1 class="text-3xl font-bold mb-6">Edit Profile</h1>
+<div class="container mx-auto px-4 py-12">
+    <div class="max-w-2xl mx-auto">
+        <h1 class="text-4xl font-bold mb-8 text-center">
+            <span class="gradient-text">Edit Profile</span>
+        </h1>
         
         {#if error}
-            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6" role="alert">
-                <p>{error}</p>
+            <div class="bg-red-50 dark:bg-red-900/50 border border-red-200 dark:border-red-800 rounded-xl p-4 mb-6" role="alert">
+                <p class="text-red-600 dark:text-red-400 flex items-center">
+                    <i class="fas fa-exclamation-triangle mr-2"></i> {error}
+                </p>
             </div>
         {/if}
         
         {#if success}
-            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
-                <p>Profile updated successfully! Redirecting...</p>
+            <div class="bg-green-50 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-xl p-4 mb-6" role="alert">
+                <p class="text-green-600 dark:text-green-400 flex items-center">
+                    <i class="fas fa-check-circle mr-2"></i> Profile updated successfully! Redirecting...
+                </p>
             </div>
         {/if}
         
-        <form on:submit|preventDefault={handleSubmit} class="bg-white p-6 rounded shadow-sm">
-            <div class="mb-4">
-                <label for="username" class="block mb-2 font-medium">Username</label>                <input
+        <form on:submit|preventDefault={handleSubmit} class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-primary-200 dark:border-primary-800">
+            <div class="mb-6">
+                <label for="username" class="block text-lg font-semibold mb-3 dark:text-gray-300 text-gray-800">
+                    <i class="fas fa-user mr-2 text-primary-500"></i> Username
+                </label>
+                <input
                     type="text"
                     id="username"
                     bind:value={username}
-                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded hover:border-gray-400 dark:hover:border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white transition-colors cursor-text"
+                    class="w-full px-4 py-3 border border-primary-300 dark:border-primary-700 rounded-xl text-base focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white transition-all duration-300"
                     disabled={isLoading}
                     required
                 />
             </div>
             
-            <div class="mb-6">
-                <label for="bio" class="block mb-2 font-medium dark:text-gray-200">Bio</label>
+            <div class="mb-8">
+                <label for="bio" class="block text-lg font-semibold mb-3 dark:text-gray-300 text-gray-800">
+                    <i class="fas fa-align-left mr-2 text-secondary-500"></i> Bio
+                </label>
                 <textarea
                     id="bio"
                     bind:value={bio}
-                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded hover:border-gray-400 dark:hover:border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none dark:bg-gray-700 dark:text-white transition-colors cursor-text"
+                    class="w-full px-4 py-3 border border-primary-300 dark:border-primary-700 rounded-xl text-base focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none dark:bg-gray-800 dark:text-white transition-all duration-300"
                     rows="4"
                     disabled={isLoading}
                     placeholder="Tell us a bit about yourself (optional)"
                 ></textarea>
             </div>
             
-            <div class="flex justify-between space-x-4">
-                <a href="/profile" class="border border-gray-300 dark:border-gray-600 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 px-4 py-2 transition-all shadow-sm hover:shadow text-sm font-medium">Cancel</a>
+            <div class="flex justify-center space-x-6">
+                <a href="/profile" class="btn btn-secondary px-6 py-3 text-lg font-semibold">
+                    <i class="fas fa-times mr-2"></i> Cancel
+                </a>
                 <button 
                     type="submit" 
                     disabled={isLoading}
-                    class="border border-gray-300 dark:border-gray-600 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 px-4 py-2 transition-all shadow-sm hover:shadow flex items-center justify-center text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                    class="btn btn-primary px-8 py-3 text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                    {isLoading ? 'Saving...' : 'Save Changes'}
+                    {#if isLoading}
+                        <i class="fas fa-spinner fa-spin mr-2"></i> Saving...
+                    {:else}
+                        <i class="fas fa-save mr-2"></i> Save Changes
+                    {/if}
                 </button>
             </div>
         </form>

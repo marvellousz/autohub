@@ -1,8 +1,14 @@
 // Theme store for managing dark/light mode
 import { writable } from 'svelte/store';
 
-// Always return dark theme
-const getInitialTheme = () => 'dark';
+// Get initial theme from localStorage or default to 'light'
+const getInitialTheme = () => {
+    if (typeof window !== 'undefined') {
+        const stored = localStorage.getItem('theme');
+        return stored || 'light';
+    }
+    return 'light';
+};
 
 // Create theme store
 export const theme = writable(getInitialTheme());
@@ -10,11 +16,19 @@ export const theme = writable(getInitialTheme());
 // Initialize theme on client side
 export function initTheme() {
     if (typeof window !== 'undefined') {
-        document.documentElement.classList.add('dark');
+        const currentTheme = getInitialTheme();
+        document.documentElement.classList.toggle('dark', currentTheme === 'dark');
     }
 }
 
-// Keep toggleTheme as a no-op function to avoid breaking imports
+// Toggle between light and dark themes
 export function toggleTheme() {
-    // Do nothing as we're always in dark mode
+    if (typeof window !== 'undefined') {
+        theme.update(currentTheme => {
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle('dark', newTheme === 'dark');
+            return newTheme;
+        });
+    }
 }

@@ -131,7 +131,7 @@
             </div>
               <button
                 type="submit"
-                class="w-full py-3 px-4 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-all duration-200 focus:ring-2 focus:ring-blue-300 focus:outline-none disabled:opacity-50 shadow-md hover:shadow-lg"
+                class="btn btn-primary w-full py-3 px-4 text-lg font-semibold disabled:opacity-50"
                 disabled={isLoading}
             >
                 <i class="fas fa-user-plus mr-2"></i>
@@ -140,7 +140,7 @@
         </form>          <div class="mt-4 text-center">
             <p class="dark:text-gray-300">
                 Already have an account?
-                <a href="/login" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Log in</a>
+                <a href="/login" class="text-primary-600 dark:text-primary-400 hover:underline font-medium">Log in</a>
             </p>        </div>
     </div>
 </main>

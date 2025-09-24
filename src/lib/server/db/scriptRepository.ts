@@ -73,7 +73,14 @@ export async function updateScript(id: string, script: Partial<ScriptInterface>)
 
 // Delete a script
 export async function deleteScript(id: string): Promise<boolean> {
-    await connectToDatabase();    try {
+    await connectToDatabase();
+    try {
+        // Delete all comments associated with this script first
+        const { Comment } = await import('./models');
+        await Comment.deleteMany({ scriptId: id });
+        console.log(`Deleted comments for script ${id}`);
+        
+        // Then delete the script
         const result = await Script.findByIdAndDelete(id);
         return !!result;
     } catch (error: any) {

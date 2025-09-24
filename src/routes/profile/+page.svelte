@@ -50,7 +50,7 @@
     
     // Handle script deletion
     async function handleDelete(scriptId: string) {
-        if (!confirm('Are you sure you want to delete this script? This action cannot be undone.')) {
+        if (!confirm('Are you sure you want to delete this script? This action cannot be undone. All comments on this script will also be deleted.')) {
             return;
         }
         
@@ -59,6 +59,8 @@
         
         try {
             await deleteScript(scriptId);
+            // Refresh comments after script deletion to remove orphaned comments
+            await fetchUserComments();
         } catch (err: any) {
             deleteError = err.message;
         } finally {
@@ -93,6 +95,24 @@
             isLoadingComments = false;
         }
     }
+
+    // Cleanup orphaned comments
+    async function cleanupOrphanedComments() {
+        try {
+            const response = await fetch('/api/cleanup-orphaned-comments', {
+                method: 'POST'
+            });
+            
+            if (response.ok) {
+                const result = await response.json();
+                console.log(result.message);
+                // Refresh comments after cleanup
+                await fetchUserComments();
+            }
+        } catch (err: any) {
+            console.error('Error cleaning up orphaned comments:', err);
+        }
+    }
 </script>
 
 <svelte:head>
@@ -113,8 +133,8 @@
     {:else if $authStore.isAuthenticated}
         <div class="max-w-6xl mx-auto">
             <!-- Account Information -->
-            <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md mb-8">
-                <h2 class="text-xl font-bold mb-4">Account Information</h2>
+            <div class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-primary-200 dark:border-primary-800 mb-8">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">Account Information</h2>
                 
                 <div class="mb-4">
                     <strong class="block text-gray-600 dark:text-gray-300 mb-1">Username:</strong>
@@ -138,7 +158,7 @@
                     </div>
                 {/if}
                 
-                <a href="/profile/edit" class="inline-block border border-gray-300 dark:border-gray-600 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 px-4 py-2 transition-all shadow-sm hover:shadow text-sm font-medium">
+                <a href="/profile/edit" class="btn btn-primary px-6 py-3 text-lg font-semibold">
                     <i class="fas fa-edit mr-2"></i>
                     Edit Profile
                 </a>
@@ -152,7 +172,7 @@
                     {#if userScripts.length === 0}
                         <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-8 text-center">
                             <p class="mb-4 text-gray-600 dark:text-gray-300">You haven't submitted any scripts yet.</p>
-                            <a href="/submit" class="inline-block border border-gray-300 dark:border-gray-600 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 px-4 py-2 transition-all shadow-sm hover:shadow text-sm font-medium">
+                            <a href="/submit" class="btn btn-primary px-6 py-3 text-lg font-semibold">
                                 <i class="fas fa-upload mr-2"></i>
                                 Submit your first script
                             </a>
@@ -192,7 +212,16 @@
 
                 <!-- User's Comments -->
                 <div>
-                    <h2 class="text-2xl font-bold mb-6">My Comments</h2>
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold">My Comments</h2>
+                        <button
+                            on:click={cleanupOrphanedComments}
+                            class="px-3 py-1.5 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                            title="Clean up orphaned comments"
+                        >
+                            <i class="fas fa-broom mr-1"></i> Cleanup
+                        </button>
+                    </div>
 
                     {#if isLoadingComments}
                         <div class="text-center py-8">

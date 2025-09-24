@@ -58,10 +58,15 @@ export async function getCommentsByScriptId(scriptId: string): Promise<CommentIn
 export async function getCommentsByUserId(username: string): Promise<CommentInterface[]> {
     await connectToDatabase();
     
+    // Get comments and populate script info to filter out orphaned comments
     const comments = await Comment.find({ username })
+        .populate('scriptId', 'title')
         .sort({ createdAt: -1 });
     
-    return comments.map(documentToComment);
+    // Filter out comments where the script no longer exists (scriptId is null)
+    const validComments = comments.filter(comment => comment.scriptId !== null);
+    
+    return validComments.map(documentToComment);
 }
 
 // Delete a comment

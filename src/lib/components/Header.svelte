@@ -27,68 +27,68 @@
     }
 </script>
 
-<header class="bg-white shadow-md dark:bg-gray-900 dark:shadow-gray-800">
+<header class="bg-white/80 backdrop-blur-md shadow-lg dark:bg-gray-900/80 border-b border-primary-200 dark:border-primary-800">
     <div class="container mx-auto px-4">
         <nav class="flex items-center justify-between py-4">
-            <a href="/" class="text-xl font-bold text-blue-600 dark:text-blue-400 flex items-center">
-                <i class="fas fa-robot mr-2"></i> AutoHub
+            <a href="/" class="text-2xl font-bold gradient-text flex items-center hover:scale-105 transition-transform duration-300">
+                <i class="fas fa-robot mr-3 text-2xl"></i> AutoHub
             </a>
             
             <!-- Mobile menu button -->
             <button 
-                class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
+                class="md:hidden p-3 rounded-xl hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-all duration-300 hover:scale-110"
                 on:click={toggleMobileMenu}
                 aria-label="Toggle mobile menu"
             >
-                <i class="fas {isMobileMenuOpen ? 'fa-times' : 'fa-bars'} text-gray-700 dark:text-gray-300"></i>
+                <i class="fas {isMobileMenuOpen ? 'fa-times' : 'fa-bars'} text-primary-600 dark:text-primary-400 text-lg"></i>
             </button>            <!-- Navigation menu -->
-            <ul class={`hidden md:flex space-x-3 items-center lg:space-x-6 ${isMobileMenuOpen ? '!flex flex-col fixed inset-x-0 top-[72px] bg-white dark:bg-gray-900 p-4 space-y-4 shadow-lg border-t border-gray-200 dark:border-gray-700 z-50' : ''}`}>
+            <ul class={`hidden md:flex space-x-2 items-center lg:space-x-4 ${isMobileMenuOpen ? '!flex flex-col fixed inset-x-0 top-[88px] bg-white/95 dark:bg-gray-900/95 backdrop-blur-md p-6 space-y-4 shadow-2xl border-t border-primary-200 dark:border-primary-800 z-50 rounded-b-2xl' : ''}`}>
                 <li class="md:w-auto w-full">
-                    <a href="/" class={`px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all block w-full md:w-auto ${$page.url.pathname === '/' ? 'text-blue-600 dark:text-blue-400 font-medium' : 'text-gray-700 dark:text-gray-300'}`}>
-                        <i class="fas fa-home mr-1"></i> Home
+                    <a href="/" class={`px-4 py-3 rounded-xl hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-all duration-300 block w-full md:w-auto group ${$page.url.pathname === '/' ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-lg' : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'}`}>
+                        <i class="fas fa-home mr-2 group-hover:scale-110 transition-transform"></i> Home
                     </a>
                 </li>
                 <li class="md:w-auto w-full">
-                    <a href="/scripts" class={`px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all block w-full md:w-auto ${$page.url.pathname === '/scripts' ? 'text-blue-600 dark:text-blue-400 font-medium' : 'text-gray-700 dark:text-gray-300'}`}>
-                        <i class="fas fa-code mr-1"></i> Browse Scripts
+                    <a href="/scripts" class={`px-4 py-3 rounded-xl hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-all duration-300 block w-full md:w-auto group ${$page.url.pathname === '/scripts' ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-lg' : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'}`}>
+                        <i class="fas fa-code mr-2 group-hover:scale-110 transition-transform"></i> Browse Scripts
                     </a>
                 </li>
                 <li class="md:w-auto w-full">
-                    <a href="/submit" class={`px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all block w-full md:w-auto ${$page.url.pathname === '/submit' ? 'text-blue-600 dark:text-blue-400 font-medium' : 'text-gray-700 dark:text-gray-300'}`}>
-                        <i class="fas fa-upload mr-1"></i> Submit Script
+                    <a href="/submit" class={`px-4 py-3 rounded-xl hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-all duration-300 block w-full md:w-auto group ${$page.url.pathname === '/submit' ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-lg' : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'}`}>
+                        <i class="fas fa-upload mr-2 group-hover:scale-110 transition-transform"></i> Submit Script
                     </a>
                 </li>
                 <li class="md:w-auto w-full">
-                    <a href="/about" class={`px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all block w-full md:w-auto ${$page.url.pathname === '/about' ? 'text-blue-600 dark:text-blue-400 font-medium' : 'text-gray-700 dark:text-gray-300'}`}>
-                        <i class="fas fa-info-circle mr-1"></i> About
+                    <a href="/about" class={`px-4 py-3 rounded-xl hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-all duration-300 block w-full md:w-auto group ${$page.url.pathname === '/about' ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-lg' : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'}`}>
+                        <i class="fas fa-info-circle mr-2 group-hover:scale-110 transition-transform"></i> About
                     </a>
                 </li>
                 <!-- Authentication Links -->
                 {#if $authStore.isAuthenticated}
                     <li class="relative group md:w-auto w-full">
-                        <button class="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all w-full md:w-auto">
-                            <i class="fas fa-user-circle mr-1"></i>
-                            <span>{$authStore.user?.username || 'User'}</span>
-                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        <button class="flex items-center text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 focus:outline-none px-4 py-3 rounded-xl hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-all duration-300 w-full md:w-auto group">
+                            <i class="fas fa-user-circle mr-2 group-hover:scale-110 transition-transform"></i>
+                            <span class="font-medium">{$authStore.user?.username || 'User'}</span>
+                            <i class="fas fa-chevron-down ml-2 text-xs group-hover:rotate-180 transition-transform"></i>
                         </button>
-                        <div class="{isMobileMenuOpen ? 'relative md:absolute w-full mt-2' : 'absolute'} right-0 w-48 py-2 mt-1 bg-white dark:bg-gray-800 rounded-lg shadow-xl {isMobileMenuOpen ? 'block' : 'invisible group-hover:visible'} z-10 border border-gray-200 dark:border-gray-700 transition-all">
-                            <a href="/profile" class="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-500 hover:text-white transition-colors">
-                                <i class="fas fa-id-card mr-2"></i> Profile
+                        <div class="{isMobileMenuOpen ? 'relative md:absolute w-full mt-2' : 'absolute'} right-0 w-56 py-3 mt-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md rounded-2xl shadow-2xl {isMobileMenuOpen ? 'block' : 'invisible group-hover:visible'} z-10 border border-primary-200 dark:border-primary-800 transition-all duration-300">
+                            <a href="/profile" class="flex items-center px-6 py-3 text-gray-700 dark:text-gray-200 hover:bg-gradient-to-r hover:from-primary-500 hover:to-secondary-500 hover:text-white transition-all duration-300 rounded-xl mx-2">
+                                <i class="fas fa-id-card mr-3"></i> Profile
                             </a>
-                            <button on:click={handleLogout} class="flex items-center w-full text-left px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-500 hover:text-white transition-colors">
-                                <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                            <button on:click={handleLogout} class="flex items-center w-full text-left px-6 py-3 text-gray-700 dark:text-gray-200 hover:bg-gradient-to-r hover:from-primary-500 hover:to-secondary-500 hover:text-white transition-all duration-300 rounded-xl mx-2">
+                                <i class="fas fa-sign-out-alt mr-3"></i> Logout
                             </button>
                         </div>
                     </li>
                 {:else}
                     <li class="md:w-auto w-full">
-                        <a href="/login" class={`px-4 py-2 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-all block w-full md:w-auto text-center ${$page.url.pathname === '/login' ? 'text-blue-600 dark:text-blue-400 font-bold' : 'text-gray-700 dark:text-gray-300'}`}>
-                            <i class="fas fa-sign-in-alt mr-1"></i> Login
+                        <a href="/login" class={`px-4 py-3 rounded-xl hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-all duration-300 block w-full md:w-auto text-center group ${$page.url.pathname === '/login' ? 'bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-lg' : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'}`}>
+                            <i class="fas fa-sign-in-alt mr-2 group-hover:scale-110 transition-transform"></i> Login
                         </a>
                     </li>
                     <li class="md:w-auto w-full">
-                        <a href="/register" class={`px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all shadow-sm block w-full md:w-auto text-center ${$page.url.pathname === '/register' ? 'font-bold' : ''}`}>
-                            <i class="fas fa-user-plus mr-1"></i> Register
+                        <a href="/register" class={`px-6 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-xl hover:from-primary-600 hover:to-secondary-600 transition-all duration-300 shadow-lg hover:shadow-xl block w-full md:w-auto text-center group hover:scale-105 ${$page.url.pathname === '/register' ? 'font-bold' : ''}`}>
+                            <i class="fas fa-user-plus mr-2 group-hover:scale-110 transition-transform"></i> Register
                         </a>
                     </li>
                 {/if}
